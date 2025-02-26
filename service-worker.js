@@ -1,54 +1,31 @@
-const CACHE_NAME = "pwa-cache-v1";
-const urlsToCache = [
-    "/PushWebApp/",
-    "/PushWebApp/index.html",
-    "/PushWebApp/style.css",
-    "/PushWebApp/script.js",
-    "/PushWebApp/manifest.json",
-    "/PushWebApp/icon.png"
-];
-
-// Cài đặt Service Worker & cache file
-self.addEventListener("install", event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => {
-            return cache.addAll(urlsToCache);
-        })
-    );
+self.addEventListener('push', (event) => {
+    // PushData keys structure standart https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification
+    let pushData = event.data.json();
+    if (!pushData || !pushData.title) {
+        console.error('Received WebPush with an empty title. Received body: ', pushData);
+    }
+    self.registration.showNotification(pushData.title, pushData)
+        .then(() => {
+            // You can save to your analytics fact that push was shown
+            // fetch('https://your_backend_server.com/track_show?message_id=' + pushData.data.message_id);
+        });
 });
 
-// Chặn request & lấy dữ liệu từ cache nếu có
-self.addEventListener("fetch", event => {
-    event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request);
-        })
-    );
-});
-
-// Xóa cache cũ khi cập nhật
-self.addEventListener("activate", event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.filter(name => name !== CACHE_NAME).map(name => caches.delete(name))
-            );
-        })
-    );
-});
-
-self.addEventListener("push", function(event) {
-    const data = event.data.json();
-    self.registration.showNotification(data.title, {
-        body: data.body,
-        icon: "/icon.png",
-        badge: "/icon.png",
-        vibrate: [200, 100, 200],
-        data: { url: data.url }
-    });
-});
-
-self.addEventListener("notificationclick", function(event) {
+self.addEventListener('notificationclick', function (event) {
     event.notification.close();
-    event.waitUntil(clients.openWindow(event.notification.data.url));
+
+    if (!event.notification.data) {
+        console.error('Click on WebPush with empty data, where url should be. Notification: ', event.notification)
+        return;
+    }
+    if (!event.notification.data.url) {
+        console.error('Click on WebPush without url. Notification: ', event.notification)
+        return;
+    }
+
+    clients.openWindow(event.notification.data.url)
+        .then(() => {
+            // You can send fetch request to your analytics API fact that push was clicked
+            // fetch('https://your_backend_server.com/track_click?message_id=' + pushData.data.message_id);
+        });
 });
