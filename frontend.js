@@ -1,5 +1,5 @@
 async function initServiceWorker() {
-    let swRegistration = await navigator.serviceWorker.register('https://andreinwald.github.io/webpush-ios-example/serviceworker.js', {scope: '/webpush-ios-example/'})
+    let swRegistration = await navigator.serviceWorker.register('https://t-phong.github.io/PushWebApp/service-worker.js', {scope: '/PushWebApp/'})
     let pushManager = swRegistration.pushManager;
 
     if (!isPushManagerActive(pushManager)) {
