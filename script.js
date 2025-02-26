@@ -1,6 +1,6 @@
 // Đăng ký Service Worker
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js")
+    navigator.serviceWorker.register("/PushWebApp/service-worker.js")
         .then(reg => console.log("Service Worker đăng ký thành công!", reg))
         .catch(err => console.log("Service Worker lỗi:", err));
 }
