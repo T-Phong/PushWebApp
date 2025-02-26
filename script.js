@@ -32,7 +32,7 @@ window.OneSignal = window.OneSignal || [];
             appId: "6fcc36e2-b2e6-4be9-bb54-0497bd56591d", // Thay YOUR_APP_ID bằng App ID từ OneSignal
             notifyButton: { enable: true }, // Hiển thị nút đăng ký thông báo
             allowLocalhostAsSecureOrigin: true, // Cho phép chạy trên localhost
-            serviceWorkerPath: "/PushWebApp/OneSignalSDKWorker.js"
+            serviceWorkerPath: "/PushWebApp/OneSignalSDKWorker1.js"
         });
     });
 OneSignal.push(function() {
