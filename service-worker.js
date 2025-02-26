@@ -1,11 +1,11 @@
 const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
-    "/",
-    "/index.html",
-    "/style.css",
-    "/script.js",
-    "/manifest.json",
-    "/icon.png"
+    "/PushWebApp/",
+    "/PushWebApp/index.html",
+    "/PushWebApp/style.css",
+    "/PushWebApp/script.js",
+    "/PushWebApp/manifest.json",
+    "/PushWebApp/icon.png"
 ];
 
 // Cài đặt Service Worker & cache file
