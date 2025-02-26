@@ -8,17 +8,6 @@
     <link rel="manifest" href="/PushWebApp/manifest.json"> <!-- Khai báo PWA -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-        OneSignal.init({
-            appId: "6fcc36e2-b2e6-4be9-bb54-0497bd56591d", // Thay YOUR_APP_ID bằng App ID từ OneSignal
-            notifyButton: { enable: true }, // Hiển thị nút đăng ký thông báo
-            allowLocalhostAsSecureOrigin: true, // Cho phép chạy trên localhost
-            serviceWorkerPath: "/PushWebApp/OneSignalSDKWorker.js"
-        });
-    });
-    </script>
 
 </head>
 <body>
