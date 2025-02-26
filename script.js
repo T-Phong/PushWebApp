@@ -27,18 +27,18 @@ window.addEventListener("beforeinstallprompt", (e) => {
     });
 });
 
-// OneSignal.push(function() {
-//     OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-//         if (isEnabled) {
-//             console.log("🔔 Thông báo đã được bật!");
-//         } else {
-//             console.log("🚀 Đăng ký nhận thông báo...");
-//             OneSignal.showNativePrompt();
-//         }
-//     });
+OneSignal.push(function() {
+    OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+        if (isEnabled) {
+            console.log("🔔 Thông báo đã được bật!");
+        } else {
+            console.log("🚀 Đăng ký nhận thông báo...");
+            OneSignal.showNativePrompt();
+        }
+    });
 
-//     // Lắng nghe sự kiện người dùng đăng ký nhận thông báo
-//     OneSignal.on('subscriptionChange', function(isSubscribed) {
-//         console.log("Trạng thái thông báo:", isSubscribed ? "✅ Đã đăng ký" : "❌ Đã tắt");
-//     });
-// });
+    // Lắng nghe sự kiện người dùng đăng ký nhận thông báo
+    OneSignal.on('subscriptionChange', function(isSubscribed) {
+        console.log("Trạng thái thông báo:", isSubscribed ? "✅ Đã đăng ký" : "❌ Đã tắt");
+    });
+});
