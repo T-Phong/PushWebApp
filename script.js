@@ -31,6 +31,7 @@ window.OneSignal = window.OneSignal || [];
         OneSignal.init({
             appId: "6fcc36e2-b2e6-4be9-bb54-0497bd56591d", // Thay YOUR_APP_ID bằng App ID từ OneSignal
             notifyButton: { enable: true }, // Hiển thị nút đăng ký thông báo
+            safari_web_id:"https://t-phong.github.io/PushWebApp/",
             serviceWorkerPath: "https://t-phong.github.io/PushWebApp/OneSignalSDKWorker.js"
         });
     });
@@ -49,3 +50,8 @@ OneSignal.push(function() {
         console.log("Trạng thái thông báo:", isSubscribed ? "✅ Đã đăng ký" : "❌ Đã tắt");
     });
 });
+function subscribeUser() {
+    OneSignal.push(function() {
+        OneSignal.showNativePrompt();
+    });
+}
