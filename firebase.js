@@ -1,8 +1,5 @@
-$(document).ready(function(){
-
-    $('#test_regis_noti').live('click', function(e) {  
-        alert(1);
-    });
+$('#test_regis_noti').click(function (e) {
+    document.getElementById('status').val("ok");
 });
 // Cấu hình Firebase
 const firebaseConfig = {
