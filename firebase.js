@@ -34,7 +34,7 @@ $('#test_regis_noti').click(async function (e) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token }),
             });
-            $("#status").val(token);
+            $("#status").val('ok');
         } else {
             $("#status").val('reject');
         }
