@@ -21,11 +21,10 @@ navigator.serviceWorker.register('/firebase-messaging-sw.js')
         console.log("Service Worker Registered!");
     });
 
-$('#test_regis_noti').click(async function (e) {
+$('#test_regis_noti').click(function (e) {
     try {
-        const permission = await Notification.requestPermission();
-        const token = await messaging.getToken({ vapidKey: "BH83SAbDYe0Y4OtDBt0Z6Y46auqMXjvIXoYyPQZbYQsUQuD9rmr0lbuSwdLbE7z4QVq6R2N4WXkJFTSBzvhgNg0" });
-        $("#status").val('ok');
+        const token = messaging.getToken({ vapidKey: "BH83SAbDYe0Y4OtDBt0Z6Y46auqMXjvIXoYyPQZbYQsUQuD9rmr0lbuSwdLbE7z4QVq6R2N4WXkJFTSBzvhgNg0" });
+        $("#status").val('ok - ' + token);
         // if (permission === "granted") {
             
         //     console.log("FCM Token:", token);
