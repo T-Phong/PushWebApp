@@ -1,6 +1,4 @@
-$('#test_regis_noti').click(function (e) {
-    $("#status").val('eee');
-});
+
 // Cấu hình Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDZ-8HmKPGucUX6pOkGNc3HP5-Z0sCkQIo",
@@ -23,11 +21,7 @@ navigator.serviceWorker.register('/firebase-messaging-sw.js')
         console.log("Service Worker Registered!");
     });
 
-async function requestPermission1() {
-    alert("222");
-}
-// Yêu cầu quyền nhận thông báo
-async function requestPermission() {
+$('#test_regis_noti').click(async function (e) {
     try {
         const permission = await Notification.requestPermission();
         if (permission === "granted") {
@@ -40,16 +34,18 @@ async function requestPermission() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ token }),
             });
-            document.getElementById('status').val("ok");
-            alert("Bạn đã đăng ký nhận thông báo thành công!");
+            $("#status").val('ok');
         } else {
-            document.getElementById('status').val("reject");
-            console.log("Người dùng từ chối thông báo!");
+            $("#status").val('reject');
         }
     } catch (error) {
-        console.error("Lỗi khi đăng ký thông báo:", error);
-        document.getElementById('status').val(error);
+        $("#status").val('error');
     }
+    
+});
+// Yêu cầu quyền nhận thông báo
+async function requestPermission() {
+
 }
 
 // Khi nhận được thông báo từ Firebase
