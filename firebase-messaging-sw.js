@@ -1,16 +1,13 @@
-importScripts("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js");
-
 // Cấu hình Firebase
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDZ-8HmKPGucUX6pOkGNc3HP5-Z0sCkQIo",
+    authDomain: "testpush-327a6.firebaseapp.com",
+    projectId: "testpush-327a6",
+    storageBucket: "testpush-327a6.firebasestorage.app",
+    messagingSenderId: "928497477879",
+    appId: "1:928497477879:web:fa275620d257bc1c35cbf2",
+    measurementId: "G-FL7JNMZY7K"
 };
-
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 

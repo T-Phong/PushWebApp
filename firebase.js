@@ -1,5 +1,9 @@
-importScripts("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js");
+$(document).ready(function(){
+
+    $('#test_regis_noti').live('click', function(e) {  
+        alert(1);
+    });
+});
 // Cấu hình Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDZ-8HmKPGucUX6pOkGNc3HP5-Z0sCkQIo",
@@ -28,7 +32,6 @@ async function requestPermission1() {
 // Yêu cầu quyền nhận thông báo
 async function requestPermission() {
     try {
-        alert("111");
         const permission = await Notification.requestPermission();
         if (permission === "granted") {
             const token = await messaging.getToken({ vapidKey: "BH83SAbDYe0Y4OtDBt0Z6Y46auqMXjvIXoYyPQZbYQsUQuD9rmr0lbuSwdLbE7z4QVq6R2N4WXkJFTSBzvhgNg0" });
