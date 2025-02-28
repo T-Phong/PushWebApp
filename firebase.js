@@ -1,4 +1,5 @@
 
+import { initializeApp } from 'https://cdn.skypack.dev/preact';
 // Cấu hình Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDZ-8HmKPGucUX6pOkGNc3HP5-Z0sCkQIo",
@@ -11,7 +12,7 @@ const firebaseConfig = {
 };
 
 // Khởi tạo Firebase
-firebase.initializeApp(firebaseConfig);
+const app  = firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 // Đăng ký Service Worker
@@ -26,7 +27,7 @@ $('#test_regis_noti').click(function (e) {
         const token = messaging.getToken({ vapidKey: "BH83SAbDYe0Y4OtDBt0Z6Y46auqMXjvIXoYyPQZbYQsUQuD9rmr0lbuSwdLbE7z4QVq6R2N4WXkJFTSBzvhgNg0" });
         $("#status").val('ok - ' + token);
         // if (permission === "granted") {
-            
+
         //     console.log("FCM Token:", token);
 
         //     // Gửi Token lên backend .NET
@@ -35,14 +36,14 @@ $('#test_regis_noti').click(function (e) {
         //         headers: { "Content-Type": "application/json" },
         //         body: JSON.stringify({ token }),
         //     });
-            
+
         // } else {
         //     $("#status").val('reject');
         // }
     } catch (error) {
         $("#status").val('error');
     }
-    
+
 });
 // Yêu cầu quyền nhận thông báo
 async function requestPermission() {
