@@ -1,4 +1,4 @@
-
+import firebase from 'firebase/compat/app'
 // Cấu hình Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDZ-8HmKPGucUX6pOkGNc3HP5-Z0sCkQIo",
