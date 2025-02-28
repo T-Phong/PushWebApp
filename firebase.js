@@ -24,20 +24,22 @@ navigator.serviceWorker.register('/firebase-messaging-sw.js')
 $('#test_regis_noti').click(async function (e) {
     try {
         const permission = await Notification.requestPermission();
-        if (permission === "granted") {
-            const token = await messaging.getToken({ vapidKey: "BH83SAbDYe0Y4OtDBt0Z6Y46auqMXjvIXoYyPQZbYQsUQuD9rmr0lbuSwdLbE7z4QVq6R2N4WXkJFTSBzvhgNg0" });
-            console.log("FCM Token:", token);
+        const token = await messaging.getToken({ vapidKey: "BH83SAbDYe0Y4OtDBt0Z6Y46auqMXjvIXoYyPQZbYQsUQuD9rmr0lbuSwdLbE7z4QVq6R2N4WXkJFTSBzvhgNg0" });
+        $("#status").val('ok');
+        // if (permission === "granted") {
+            
+        //     console.log("FCM Token:", token);
 
-            // Gửi Token lên backend .NET
-            await fetch("https://aistaff.aireal.vn/api/save-token/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ token }),
-            });
-            $("#status").val('ok');
-        } else {
-            $("#status").val('reject');
-        }
+        //     // Gửi Token lên backend .NET
+        //     await fetch("https://aistaff.aireal.vn/api/save-token/", {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify({ token }),
+        //     });
+            
+        // } else {
+        //     $("#status").val('reject');
+        // }
     } catch (error) {
         $("#status").val('error');
     }
