@@ -1,5 +1,4 @@
 
-import { initializeApp } from 'https://cdn.skypack.dev/preact';
 // Cấu hình Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDZ-8HmKPGucUX6pOkGNc3HP5-Z0sCkQIo",
